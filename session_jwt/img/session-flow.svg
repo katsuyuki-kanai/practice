@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <style>
+      .title { font: bold 20px sans-serif; fill: #333; }
+      .label { font: 14px sans-serif; fill: #333; }
+      .small-label { font: 12px sans-serif; fill: #666; }
+      .box { fill: #e3f2fd; stroke: #1976d2; stroke-width: 2; }
+      .server-box { fill: #fff3e0; stroke: #f57c00; stroke-width: 2; }
+      .db-box { fill: #f3e5f5; stroke: #7b1fa2; stroke-width: 2; }
+      .arrow { stroke: #333; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .return-arrow { stroke: #666; stroke-width: 2; fill: none; marker-end: url(#arrowhead-return); stroke-dasharray: 5,5; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#333" />
+    </marker>
+    <marker id="arrowhead-return" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#666" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" class="title">セッションベース認証フロー</text>
+  
+  <!-- Client Box -->
+  <rect x="50" y="60" width="150" height="80" class="box" rx="5"/>
+  <text x="125" y="90" text-anchor="middle" class="label">クライアント</text>
+  <text x="125" y="110" text-anchor="middle" class="small-label">(ブラウザ)</text>
+  
+  <!-- Server Box -->
+  <rect x="325" y="60" width="150" height="80" class="server-box" rx="5"/>
+  <text x="400" y="90" text-anchor="middle" class="label">サーバー</text>
+  <text x="400" y="110" text-anchor="middle" class="small-label">(認証処理)</text>
+  
+  <!-- Session Store Box -->
+  <rect x="600" y="60" width="150" height="80" class="db-box" rx="5"/>
+  <text x="675" y="90" text-anchor="middle" class="label">セッション</text>
+  <text x="675" y="110" text-anchor="middle" class="small-label">ストア</text>
+  
+  <!-- Step 1: Login Request -->
+  <path d="M 200 180 L 325 180" class="arrow"/>
+  <text x="260" y="170" class="small-label">1. ログイン情報送信</text>
+  <text x="260" y="195" class="small-label">(ID/パスワード)</text>
+  
+  <!-- Step 2: Verify -->
+  <rect x="325" y="220" width="150" height="40" class="server-box" rx="5"/>
+  <text x="400" y="245" text-anchor="middle" class="small-label">2. 認証情報検証</text>
+  
+  <!-- Step 3: Create Session -->
+  <path d="M 475 240 L 600 240" class="arrow"/>
+  <text x="530" y="230" class="small-label">3. セッション作成</text>
+  <text x="530" y="255" class="small-label">セッションID生成</text>
+  
+  <!-- Step 4: Store Session -->
+  <rect x="600" y="280" width="150" height="40" class="db-box" rx="5"/>
+  <text x="675" y="305" text-anchor="middle" class="small-label">4. セッション保存</text>
+  
+  <!-- Step 5: Return Session ID -->
+  <path d="M 325 340 L 200 340" class="return-arrow"/>
+  <text x="260" y="330" class="small-label">5. セッションID返却</text>
+  <text x="260" y="355" class="small-label">(Cookieに保存)</text>
+  
+  <!-- Step 6: Cookie Storage -->
+  <rect x="50" y="380" width="150" height="40" class="box" rx="5"/>
+  <text x="125" y="405" text-anchor="middle" class="small-label">6. Cookie保存</text>
+  
+  <!-- Subsequent Request Section -->
+  <line x1="20" y1="450" x2="780" y2="450" stroke="#999" stroke-width="1" stroke-dasharray="10,5"/>
+  <text x="400" y="475" text-anchor="middle" class="label">以降のリクエスト</text>
+  
+  <!-- Step 7: Request with Session ID -->
+  <path d="M 200 500 L 325 500" class="arrow"/>
+  <text x="260" y="490" class="small-label">7. リクエスト送信</text>
+  <text x="260" y="515" class="small-label">(Cookie: SessionID)</text>
+  
+  <!-- Step 8: Verify Session -->
+  <path d="M 475 520 L 600 520" class="arrow"/>
+  <text x="530" y="510" class="small-label">8. セッション検証</text>
+  
+  <!-- Step 9: Return Data -->
+  <path d="M 325 560 L 200 560" class="return-arrow"/>
+  <text x="260" y="550" class="small-label">9. レスポンス返却</text>
+  <text x="260" y="575" class="small-label">(保護されたデータ)</text>
+</svg>
