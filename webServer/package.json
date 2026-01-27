@@ -1,0 +1,19 @@
+{
+  "name": "web-server-demo",
+  "version": "1.0.0",
+  "description": "新人向け勉強会用 - Webサーバーの仕組みデモ",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "web-server",
+    "ssr",
+    "csr",
+    "demo",
+    "training"
+  ],
+  "author": "",
+  "license": "MIT"
+}
